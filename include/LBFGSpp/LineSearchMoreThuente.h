@@ -195,7 +195,11 @@ public:
 
         // Make sure d points to a descent direction
         if(dg_init >= 0)
-            throw std::logic_error("the moving direction does not decrease the objective function value");
+        {
+            std::cout << "the moving direction does not decrease the objective function value\n";
+            return;
+        }
+            // throw std::logic_error("the moving direction does not decrease the objective function value");
 
         // Tolerance for convergence test
         // Sufficient decrease
@@ -284,10 +288,18 @@ public:
             step = new_step;
 
             if(step < param.min_step)
-                throw std::runtime_error("the line search step became smaller than the minimum value allowed");
+            {
+                std::cout << "the line search step became smaller than the minimum value allowed\n";
+                return; 
+            }
+                // throw std::runtime_error("the line search step became smaller than the minimum value allowed");
 
             if(step > param.max_step)
-                throw std::runtime_error("the line search step became larger than the maximum value allowed");
+            {
+                std::cout << "the line search step became larger than the maximum value allowed\n";
+                return; 
+            }
+                // throw std::runtime_error("the line search step became larger than the maximum value allowed");
 
             // Update parameter, function value, and gradient
             x.noalias() = xp + step * drt;
@@ -311,8 +323,12 @@ public:
             }
         }
 
-        // if(iter >= param.max_linesearch)
-        //     throw std::runtime_error("the line search routine reached the maximum number of iterations");
+        if(iter >= param.max_linesearch)
+        {
+            std::cout << "the line search routine reached the maximum number of iterations\n";
+            return;
+        }
+            // throw std::runtime_error("the line search routine reached the maximum number of iterations");
     }
 };
 
