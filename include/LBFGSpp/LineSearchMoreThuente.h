@@ -196,7 +196,7 @@ public:
         // Make sure d points to a descent direction
         if(dg_init >= 0)
         {
-            std::cout << "the moving direction does not decrease the objective function value\n";
+            // std::cout << "the moving direction does not decrease the objective function value\n";
             return;
         }
             // throw std::logic_error("the moving direction does not decrease the objective function value");
@@ -289,14 +289,14 @@ public:
 
             if(step < param.min_step)
             {
-                std::cout << "the line search step became smaller than the minimum value allowed\n";
+                // std::cout << "the line search step became smaller than the minimum value allowed\n";
                 return; 
             }
                 // throw std::runtime_error("the line search step became smaller than the minimum value allowed");
 
             if(step > param.max_step)
             {
-                std::cout << "the line search step became larger than the maximum value allowed\n";
+                // std::cout << "the line search step became larger than the maximum value allowed\n";
                 return; 
             }
                 // throw std::runtime_error("the line search step became larger than the maximum value allowed");
@@ -325,7 +325,7 @@ public:
 
         if(iter >= param.max_linesearch)
         {
-            std::cout << "the line search routine reached the maximum number of iterations\n";
+            // std::cout << "the line search routine reached the maximum number of iterations\n";
             return;
         }
             // throw std::runtime_error("the line search routine reached the maximum number of iterations");
